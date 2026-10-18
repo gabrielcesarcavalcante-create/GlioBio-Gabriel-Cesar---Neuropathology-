@@ -1,15 +1,9 @@
 ---
 title: GlioBio
-emoji: 🧠
-colorFrom: blue
-colorTo: green
-sdk: static
-pinned: false
+author: Gabriel César - Neuropatology Researcher 
 ---
 
-# GlioBio — biomarcadores de gliomas e neuro-oncologia baseada em evidências
-
-Protótipo de pesquisa em neuro-oncologia que roda **inteiramente no navegador** (HTML, CSS e JavaScript puros, sem backend e sem bibliotecas externas) — compatível com o SDK `static` do Hugging Face Spaces.
+# GlioBio — biomarcadores de gliomas e neuro-oncologia baseada em evidências.
 
 A base de dados original (**`data.js`**: 20 entidades da OMS CNS5 + 197 estudos indexados no PubMed) e o motor de busca (**`app.js`**: TF-IDF + similaridade de cosseno) foram **preservados sem alteração**. Sobre eles, esta versão acrescenta uma camada de análise visual pensada para o público geral.
 
@@ -88,14 +82,6 @@ Arquivos novos: `translations.js` (overlay PT→EN) e `gaps.js` (seção de lacu
 | `charts.js` | gráficos em SVG puro (barras, roscas, heatmap, anéis, faixas) |
 | `analytics.js` | cálculos derivados (porcentagens em relação aos estudos, associação combinada, matriz idade×grau) |
 | `ui.js` | ligação entre interface, dados e gráficos |
-
-## Como publicar no Hugging Face Spaces
-
-1. Crie um Space em [huggingface.co/new-space](https://huggingface.co/new-space) com SDK **Static**.
-2. Envie os 22 arquivos acima para a raiz do repositório.
-3. O Space publica automaticamente — sem build nem servidor.
-
-Para testar localmente: `python3 -m http.server` na pasta e abra `http://localhost:8000`.
 
 ## Origem dos dados e da camada clínica
 
