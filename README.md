@@ -1,6 +1,6 @@
 ---
 title: GlioBio
-author: Gabriel César - Neuropatology Researcher 
+author: Gabriel César - Neuropathology Researcher 
 ---
 
 # GlioBio — biomarcadores de gliomas e neuro-oncologia baseada em evidências.
