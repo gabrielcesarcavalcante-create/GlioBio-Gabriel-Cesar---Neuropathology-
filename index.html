@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GlioBio — biomarcadores de gliomas e neuro-oncologia baseada em evidências</title>
+<meta name="description" content="Painel educativo sobre biomarcadores de gliomas: sobrevida global em porcentagem, força da evidência, associação entre biomarcadores e tumores, prognóstico por idade e grau e mapa 3D das regiões cerebrais.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='29' fill='none' stroke='%237d2a2a' stroke-width='3'/%3E%3Cpath d='M19 40q-6-9 1-15 1-10 11-11 10-3 15 5 8 3 5 13-1 8-11 9-12 4-21-1z' fill='%237d2a2a'/%3E%3Cpath d='M24 33q4-6 8 0t8 0' fill='none' stroke='%23f6f4ef' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="skip" href="#conteudo">Ir para o conteúdo</a>
+
+<header class="navbar" id="navbar">
+  <div class="nav-inner">
+    <button class="icon-btn nav-burger" id="nav-burger" type="button" aria-label="Abrir navegação" aria-expanded="false"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <button class="nav-brand" type="button" data-goto="inicio"><svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29" fill="none" stroke="currentColor" stroke-width="3"/><path d="M19 40q-6-9 1-15 1-10 11-11 10-3 15 5 8 3 5 13-1 8-11 9-12 4-21-1z" fill="currentColor"/><path d="M24 33q4-6 8 0t8 0" fill="none" stroke="var(--bg-canvas)" stroke-width="2.4" stroke-linecap="round"/><circle cx="32" cy="32" r="24" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 4"/></svg><span class="wordmark">Glio<b>Bio</b></span></button>
+    <nav class="nav-center" aria-label="Navegação principal">
+      <button class="nav-link nav-item" data-tab="inicio" aria-selected="false"><span data-i18n="nav.inicio">Início</span></button>
+      <button class="nav-link nav-item" data-tab="biomarcadores" aria-selected="false"><span data-i18n="nav.biomarcadores">Biomarcadores</span></button>
+      <button class="nav-link nav-item" data-tab="tumores" aria-selected="false"><span data-i18n="nav.tumores">Análise por tumor</span></button>
+      <button class="nav-link nav-item" data-tab="graficos" aria-selected="false"><span data-i18n="nav.graficos">Gráficos</span></button>
+      <button class="nav-link nav-item" data-tab="mapa3d" aria-selected="false"><span data-i18n="nav.mapa3d">Mapa 3D do cérebro</span></button>
+      <button class="nav-link nav-item" data-tab="lacunas" aria-selected="false"><span data-i18n="nav.lacunas">Lacunas médicas</span></button>
+      <span class="nav-div" aria-hidden="true"></span>
+      <button class="nav-link nav-item" data-tab="perguntar" aria-selected="false"><span data-i18n="nav.perguntar">Perguntar</span></button>
+      <button class="nav-link nav-item" data-tab="sobre" aria-selected="false"><span data-i18n="nav.sobre">Sobre e fontes</span></button>
+    </nav>
+    <div class="nav-actions">
+      <div class="lang-toggle" role="group" aria-label="Idioma / Language">
+        <button id="lang-pt" class="lang-btn active" type="button">PT</button>
+        <button id="lang-en" class="lang-btn" type="button">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <span class="eyebrow mono" data-i18n="hdr.kicker">Plataforma acadêmica de neuro-oncologia · baseada em evidências</span>
+    <h1 class="hero-h1" data-i18n-html="hero.h1">Neuro-oncologia baseada em evidências</h1>
+    <p class="hero-lead" data-i18n="hdr.sub">Biomarcadores, evidência e neuro-oncologia visual em linguagem acessível: mapa 3D do cérebro, fila de priorização clínica, análise de imagens e o consultor Dr.Gliou.</p>
+    <div class="cta-row">
+      <button class="btn-primary" type="button" data-goto="biomarcadores" data-i18n="hero.cta1">Explorar biomarcadores</button>
+      <button class="btn-secondary" type="button" data-goto="lacunas" data-i18n="hero.cta2">Ver lacunas médicas</button>
+    </div>
+    <p class="trust" data-i18n="hero.trust">Sem envio de dados · executa 100% no seu navegador · não substitui o julgamento médico</p>
+    <div class="head-badges">
+      <span class="badge mono" id="badge-entities">— entidades</span>
+      <span class="badge mono" id="badge-studies">— estudos</span>
+      <span class="badge mono" id="badge-biomarkers">— biomarcadores</span>
+      <span class="badge mono" id="badge-meta">— meta-análises</span>
+      <span class="badge mono" id="badge-ia">— estudos de IA</span>
+    </div>
+  </div>
+</section>
+
+<section class="showcase">
+  <div class="glow-orb" aria-hidden="true"></div>
+  <div class="app-frame">
+    <div class="frame-toolbar">
+      <div class="tool-cluster" aria-hidden="true">
+        <span class="icon-btn tiny" data-ico="home"></span>
+        <span class="icon-btn tiny" data-ico="dna"></span>
+        <span class="icon-btn tiny" data-ico="brain"></span>
+      </div>
+      <span class="frame-title mono">gliobio · painel clínico-educacional</span>
+      <div class="tool-right">
+        <span class="viewport-tag mono">v2.12</span>
+        <div id="side-auth"></div>
+      </div>
+    </div>
+    <div class="frame-body">
+      <aside class="left-rail" id="sidebar" aria-label="Navegação do painel">
+      <nav class="side-nav">
+        <span class="side-sec" data-i18n="nav.sec.publico">Acesso público</span>
+        <button class="tab nav-item active" data-tab="inicio" aria-selected="true"><span class="ni-ico" data-ico="home"></span><span data-i18n="nav.inicio">Início</span></button>
+        <button class="tab nav-item" data-tab="biomarcadores" aria-selected="false"><span class="ni-ico" data-ico="dna"></span><span data-i18n="nav.biomarcadores">Biomarcadores</span></button>
+        <button class="tab nav-item" data-tab="tumores" aria-selected="false"><span class="ni-ico" data-ico="flask"></span><span data-i18n="nav.tumores">Análise por tumor</span></button>
+        <button class="tab nav-item" data-tab="graficos" aria-selected="false"><span class="ni-ico" data-ico="chart"></span><span data-i18n="nav.graficos">Gráficos</span></button>
+        <button class="tab nav-item" data-tab="mapa3d" aria-selected="false"><span class="ni-ico" data-ico="brain"></span><span data-i18n="nav.mapa3d">Mapa 3D do cérebro</span></button>
+        <button class="tab nav-item" data-tab="lacunas" aria-selected="false"><span class="ni-ico" data-ico="gap"></span><span data-i18n="nav.lacunas">Lacunas médicas</span></button>
+        <button class="tab nav-item" data-tab="perguntar" aria-selected="false"><span class="ni-ico" data-ico="chat"></span><span data-i18n="nav.perguntar">Perguntar</span></button>
+        <button class="tab nav-item" data-tab="sobre" aria-selected="false"><span class="ni-ico" data-ico="info"></span><span data-i18n="nav.sobre">Sobre e fontes</span></button>
+        <span class="side-sec" data-i18n="nav.sec.prof">Área do médico</span>
+        <button class="tab nav-item gated" data-tab="imagem" aria-selected="false"><span class="ni-ico" data-ico="image"></span><span data-i18n="nav.imagem">Análise de imagem</span><span class="ni-lock" data-ico="lock" title="Exige cadastro médico local"></span></button>
+        <button class="tab nav-item gated" data-tab="fila" aria-selected="false"><span class="ni-ico" data-ico="queue"></span><span data-i18n="nav.fila">Fila de espera</span><span class="ni-lock" data-ico="lock" title="Exige cadastro médico local"></span></button>
+        <button class="tab nav-item gated" data-tab="agente" aria-selected="false"><span class="ni-ico" data-ico="stetho"></span><span data-i18n="nav.agente">Dr.Gliou</span><span class="ni-lock" data-ico="lock" title="Exige cadastro médico local"></span></button>
+      </nav>
+      <p class="rail-credit mono">Gabriel César · <span data-i18n="cred.role">Pesquisador em Neuropatologia</span></p>
+      </aside>
+      <main class="frame-canvas" id="conteudo">
+        <p class="lang-note" id="lang-note" hidden>Interface in English · curated clinical texts and study records remain in Brazilian Portuguese.</p>
+  <!-- ===================== INÍCIO ===================== -->
+  <section class="tab-panel active" id="panel-inicio">
+    <div class="panel">
+      <h2 data-i18n="home.h2">O que este painel faz</h2>
+      <p class="lead" data-i18n-html="home.lead">Um <strong>glioma</strong> é um tumor que nasce nas células de suporte do cérebro (a glia). Hoje, além do nome e do grau, cada glioma é identificado por <strong>biomarcadores</strong> — alterações no DNA que dizem como ele se comporta e quais tratamentos podem funcionar. Este painel organiza essas informações em gráficos simples.</p>
+
+      <div class="howto-grid">
+        <button class="howto" data-goto="biomarcadores">
+          <span class="howto-ico" data-ico="dna"></span>
+          <strong>Escolher biomarcadores</strong>
+          <span>Veja quais gliomas estão mais associados a eles, em porcentagem, e leia a descrição de cada um.</span>
+        </button>
+        <button class="howto" data-goto="tumores">
+          <span class="howto-ico" data-ico="flask"></span>
+          <strong>Analisar um tumor</strong>
+          <span>Sobrevida global (OS) e força da evidência em %, com os estudos que sustentam cada número.</span>
+        </button>
+        <button class="howto" data-goto="graficos">
+          <span class="howto-ico" data-ico="chart"></span>
+          <strong>Comparar em gráficos</strong>
+          <span>Um gráfico por biomarcador e o prognóstico cruzando idade e grau do glioma.</span>
+        </button>
+        <button class="howto" data-goto="mapa3d">
+          <span class="howto-ico" data-ico="brain"></span>
+          <strong>Ver no cérebro em 3D</strong>
+          <span>Onde cada glioma costuma aparecer — gire o modelo com o mouse ou o dedo.</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="panel-row">
+      <div class="panel">
+        <h2 data-i18n="home.pan">Panorama da base</h2>
+        <div class="stat-grid" id="stat-grid"></div>
+      </div>
+      <div class="panel">
+        <h2 data-i18n="home.types">Que tipos de estudo sustentam a base?</h2>
+        <p class="hint" data-i18n="home.typesnote">Cada estudo indexado foi classificado pelo tipo de publicação (PubMed). Isto mostra a força da evidência disponível.</p>
+        <div id="global-composition"></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2 data-i18n="home.gloss">Mini glossário</h2>
+      <div class="glossary" id="glossary"></div>
+    </div>
+
+    <div class="panel panel-warn">
+      <h2 data-i18n="home.imp">Importante</h2>
+      <p>Esta é uma ferramenta de <strong>pesquisa e educação</strong>. Ela não faz diagnóstico, não prevê o que vai acontecer com uma pessoa específica e não substitui a conversa com a equipe de saúde. Números de sobrevida são médias de grupos grandes: cada caso depende de idade, localização do tumor, extensão da cirurgia, tratamento e estado geral.</p>
+    </div>
+  </section>
+
+  <!-- ===================== BIOMARCADORES ===================== -->
+  <section class="tab-panel" id="panel-biomarcadores">
+    <div class="panel">
+      <h2 data-i18n="bm.h2">Selecione um ou mais biomarcadores</h2>
+      <p class="lead" data-i18n-html="bm.lead">O painel mostra <strong>quais gliomas estão mais associados</strong> a eles, em porcentagem, e termina com a <strong>descrição completa</strong> de cada biomarcador escolhido.</p>
+
+      <div class="bm-controls">
+        <input type="search" id="bm-search" class="text-input" placeholder="Buscar biomarcador… (ex.: IDH, MGMT, BRAF)" id-ph="bm.search">
+        <div class="chip-row" id="bm-class-filter"></div>
+        <div class="chip-row">
+          <button class="chip-btn" data-preset="idh-codel" data-i18n="bm.pre1">IDH + 1p/19q</button>
+          <button class="chip-btn" data-preset="mgmt" data-i18n="bm.pre2">MGMT</button>
+          <button class="chip-btn" data-preset="alvos" data-i18n="bm.pre3">Alvos terapêuticos</button>
+          <button class="chip-btn" data-preset="histonas" data-i18n="bm.pre4">Histonas H3</button>
+          <button class="chip-btn" data-preset="limpar" data-i18n="bm.clear">Limpar seleção</button>
+        </div>
+      </div>
+
+      <div class="bm-grid" id="bm-picker"></div>
+    </div>
+
+    <div id="bm-output"></div>
+  </section>
+
+  <!-- ===================== ANÁLISE POR TUMOR ===================== -->
+  <section class="tab-panel" id="panel-tumores">
+    <div class="panel">
+      <h2 data-i18n="tum.h2">Análise por tipo de glioma</h2>
+      <p class="hint" data-i18n="tum.lead">Escolha uma entidade da classificação OMS (2021) para ver sobrevida global (OS) e força da evidência em porcentagem, calculadas a partir dos estudos indexados.</p>
+      <div class="entity-picker">
+        <select id="entity-select" class="select"></select>
+        <button id="analyze-btn" class="btn-primary" data-i18n="tum.gen">Gerar análise</button>
+      </div>
+    </div>
+    <div id="analysis-output"></div>
+  </section>
+
+  <!-- ===================== GRÁFICOS ===================== -->
+  <section class="tab-panel" id="panel-graficos">
+    <div class="panel">
+      <h2 data-i18n="graf.one">Um gráfico para cada biomarcador</h2>
+      <p class="lead" data-i18n-html="graf.one.lead">Cada cartão mostra a frequência típica do biomarcador nos gliomas em que ele aparece. <strong>Clique</strong> para abrir a análise completa e a descrição.</p>
+      <div class="chip-row" id="bmgrid-filter"></div>
+      <div class="spark-grid" id="spark-grid"></div>
+    </div>
+
+    <div class="panel">
+      <h2 data-i18n="graf.prog">Prognóstico: idade × grau do glioma</h2>
+      <p class="lead" data-i18n-html="graf.prog.lead">Sobrevida estimada em 5 anos (%), cruzando a <strong>faixa de idade no diagnóstico</strong> com o <strong>grau OMS</strong> do tumor. Quanto mais quente a cor, melhor o prognóstico esperado.</p>
+      <div class="scroll-x" id="heatmap-age-grade"></div>
+      <details class="how-calc">
+        <summary>Como este número foi calculado?</summary>
+        <div id="heatmap-method"></div>
+      </details>
+    </div>
+
+    <div class="panel-row">
+      <div class="panel">
+        <h2 data-i18n="graf.g5">Sobrevida em 5 anos por grau</h2>
+        <p class="hint" data-i18n="graf.g5note">Faixa clara = intervalo estimado entre as diferentes entidades do mesmo grau.</p>
+        <div id="grade-range-chart"></div>
+      </div>
+      <div class="panel">
+        <h2 data-i18n="graf.idade">O peso da idade no glioblastoma</h2>
+        <p class="hint" data-i18n="graf.idadenote">Risco relativo (HR) por faixa etária, tomando menores de 50 anos como referência (= 1,00).</p>
+        <div id="age-hr-chart"></div>
+        <div id="age-os-chart"></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2 data-i18n="graf.graus">Quais tumores pertencem a cada grau</h2>
+      <div id="grade-entities"></div>
+    </div>
+  </section>
+
+  <!-- ===================== MAPA 3D ===================== -->
+  <section class="tab-panel" id="panel-mapa3d">
+    <div class="panel">
+      <h2 data-i18n="map.h2b">Mapa 3D — concentração dos gliomas nas regiões do cérebro</h2>
+      <p class="lead" data-i18n-html="map.lead">Escolha um tumor (ou um grupo) para ver onde ele costuma se concentrar. O tamanho e a cor de cada ponto indicam a <strong>frequência relativa</strong> descrita na literatura médica (OMS CNS5, NCI PDQ e séries de neuroimagem).</p>
+      <div class="viz-picker">
+        <label for="viz-mode">Mostrar:</label>
+        <select id="viz-mode" class="select">
+          <option value="all">Todas as entidades (visão geral)</option>
+          <option value="family:adulto-difuso">Grupo: gliomas difusos do adulto</option>
+          <option value="family:pediatrico-alto">Grupo: gliomas difusos pediátricos de alto grau</option>
+          <option value="family:pediatrico-baixo">Grupo: gliomas difusos pediátricos de baixo grau</option>
+          <option value="family:circunscrito">Grupo: gliomas circunscritos</option>
+          <option value="family:glioneuronal">Grupo: tumores glioneuronais / neuronais</option>
+        </select>
+        <select id="viz-entity" class="select"><option value="">— ou uma entidade específica —</option></select>
+      </div>
+      <div id="brain-viz"></div>
+      <div class="panel-warn inline">
+        <p><strong>Como ler:</strong> este modelo é uma <em>representação esquemática</em> das localizações típicas descritas na literatura — não é um mapa de casos reais nem uma imagem de ressonância. Gliomas podem ocorrer fora dessas regiões.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== NEUROONCO-AGENT ===================== -->
+  <!-- ===================== ANÁLISE DE IMAGEM ===================== -->
+  <section class="tab-panel" id="panel-lacunas">
+    <div class="panel">
+      <h2 data-i18n="gaps.h2">Lacunas médicas em neuro-oncologia</h2>
+      <p class="lead" data-i18n="gaps.lead">Onde a medicina ainda não tem resposta: lacunas medidas na própria base (cobertura de desfecho por entidade) e lacunas curadas da literatura e do cenário de ensaios clínicos — tratamento, diagnóstico, acesso e pediatria.</p>
+      <div id="gaps-root"></div>
+    </div>
+  </section>
+
+  <section class="tab-panel" id="panel-imagem">
+    <div class="panel">
+      <h2 data-i18n="img.h2">Análise de imagem — qual o tipo de glioma mais provável?</h2>
+      <p class="lead" data-i18n-html="img.lead">Envie uma foto de exame (ressonância/TOM computadorizada) ou de lâmina de histopatologia. O GlioBio extrai <strong>descritores quantitativos</strong> da imagem (brilho, contraste, textura, bordas, padrões císticos/necróticos e calcificações) e compara com as <strong>assinaturas visuais curadas</strong> de cada tipo de glioma no banco de dados, devolvendo o ranking de compatibilidade.</p>
+      <div id="imagem-root"></div>
+      <div class="panel panel-warn inline" style="margin-top:14px">
+        <p><strong>Ferramenta educacional de padrão visual:</strong> a compatibilidade é estimada por descritores de imagem, não por diagnóstico real. O diagnóstico de glioma exige avaliação de neuroimagem por radiologista e confirmação histopatológica + molecular (OMS CNS5). Nunca use esta estimativa para condutas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FILA DE ESPERA ===================== -->
+  <section class="tab-panel" id="panel-fila">
+    <div class="panel">
+      <h2 data-i18n="fila.h2">Fila de espera por prioridade clínica</h2>
+      <p class="lead" data-i18n="fila.lead">Cadastre pacientes aguardando avaliação/cirurgia com descrição clínica e foto, e acompanhe a fila ordenada pela gravidade. Os dados ficam salvos somente neste navegador.</p>
+      <div id="fila-root"></div>
+    </div>
+  </section>
+
+  <section class="tab-panel" id="panel-agente">
+      <div id="agent-lock" hidden></div>
+      <div id="agent-body">    <div class="panel">
+      <h2 data-i18n="agent.h2">Dr.Gliou — consultor de Tumor Board virtual</h2>
+      <p class="lead" data-i18n-html="ag.lead">Agente especialista em neuro-oncologia molecular que lê a <strong>descrição livre do caso</strong> e devolve: ficha estruturada, diagnóstico integrado OMS 2021, prognóstico, plano terapêutico em duas colunas (<strong>referência internacional × realidade do SUS</strong>), ensaios clínicos, explicabilidade de cada recomendação e alertas. Executa 100% no seu navegador.</p>
+      <div class="panel-warn inline" style="margin-top:0">
+        <p data-i18n-html="ag.prof"><strong>Uso profissional.</strong> Ferramenta de apoio à decisão para médicos. Nunca substitui o julgamento clínico. Esta análise é gerada por IA e deve ser validada por um neuro-oncologista. Não constitui prescrição médica.</p>
+      </div>
+      <label class="metric-title" for="agent-input" style="display:block;margin:14px 0 6px" data-i18n="ag.label">Descrição livre do caso clínico</label>
+      <textarea id="agent-input" class="text-input agent-input" rows="7" id-ph="ag.ph" placeholder="Ex.: Homem, 62 anos, KPS 80, cefaleia e crise focal há 2 meses. RM: lesão frontal esquerda 4,8 cm com realce em anel e necrose. Ressecção subtotal. IDH wildtype, MGMT metilado, TERT promoter mutado, EGFR amplificado, sem codeleção 1p/19q, ATRX retido. Usa fenitoína. Atendido pelo SUS."></textarea>
+      <div class="chip-row">
+        <button class="chip-btn" data-case="0" data-i18n="ag.c0">Caso 1 · GBM idoso (SUS)</button>
+        <button class="chip-btn" data-case="1" data-i18n="ag.c1">Caso 2 · Oligodendroglioma G2 (privada)</button>
+        <button class="chip-btn" data-case="2" data-i18n="ag.c2">Caso 3 · DMG H3 K27M pediátrico</button>
+        <button class="chip-btn" data-case="clear" data-i18n="ag.clear">Limpar</button>
+      </div>
+      <button id="agent-run" class="btn-primary" data-i18n="ag.run">Analisar caso (pipeline de 6 passos)</button>
+      <div id="agent-output" class="agent-out" aria-live="polite"></div>
+    </div></div>
+  </section>
+
+  <!-- ===================== PERGUNTAR ===================== -->
+  <section class="tab-panel" id="panel-perguntar">
+    <div class="panel">
+      <h2 data-i18n="ask.h2">Pergunte à base</h2>
+      <p class="hint" data-i18n="ask.hint">Busca em linguagem natural sobre os dados indexados (TF-IDF + similaridade, executados no seu navegador).</p>
+      <form id="ask-form" class="ask-form">
+        <input type="text" id="ask-input" class="text-input" placeholder="Ex.: Qual o prognóstico do MGMT no glioblastoma?" id-ph="ask.ph" autocomplete="off">
+        <button type="submit" class="btn-primary">Perguntar</button>
+      </form>
+      <div class="chip-row">
+        <button class="chip-btn" data-ask="Qual o prognóstico do MGMT no glioblastoma?">MGMT no glioblastoma</button>
+        <button class="chip-btn" data-ask="Qual o papel da codeleção 1p/19q?">Codeleção 1p/19q</button>
+        <button class="chip-btn" data-ask="Biomarcadores importantes em crianças">Biomarcadores em crianças</button>
+        <button class="chip-btn" data-ask="Melhor prognóstico entre os gliomas">Melhor prognóstico</button>
+      </div>
+      <div id="ask-output" class="output" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- ===================== SOBRE ===================== -->
+  <section class="tab-panel" id="panel-sobre">
+    <div class="panel">
+      <h2 data-i18n="sobre.h2">Sobre esta base</h2>
+      <p>Os dados combinam entidades da <strong>classificação OMS de tumores do SNC (2021 — WHO CNS5)</strong>, ensaios clínicos de referência (EORTC 26951, RTOG 9402, CATNON, SIOP Ependymoma I, Stupp/Hegi/Perry) e publicações indexadas no PubMed recuperadas por buscas estruturadas. Cada registro traz a fonte primária (PMID/DOI) para verificação.</p>
+      <p>A camada de conhecimento clínico (graus OMS, distribuição anatômica, prevalências moleculares e estimativas de sobrevida) foi curada a partir das fontes abaixo e é usada apenas para fins educativos.</p>
+    </div>
+
+    <div class="panel">
+      <h2 data-i18n="sobre.met">Método dos cálculos</h2>
+      <div id="method-box"></div>
+    </div>
+
+    <div class="panel">
+      <h2 data-i18n="sobre.fontes">Fontes</h2>
+      <ol class="sources" id="sources-list"></ol>
+    </div>
+
+    <div class="panel rail-card credit">
+      <h4 class="mono" data-i18n="cred.dev">Desenvolvimento</h4>
+      <p style="margin:0;color:var(--steel-200)"><strong>Gabriel César</strong> — <span data-i18n="cred.role">Pesquisador em Neuropatologia</span>. <span data-i18n="cred.note">Concepção, curadoria clínica e desenvolvimento da plataforma GlioBio.</span></p>
+    </div>
+
+    <div class="panel panel-warn">
+      <h2 data-i18n="sobre.aviso">Aviso</h2>
+      <p>Ferramenta de pesquisa e educação. Não realiza diagnóstico e não substitui avaliação médica. Prevalências e estimativas de sobrevida são médias de literatura e variam entre séries, populações e métodos laboratoriais.</p>
+    </div>
+  </section>
+
+      </main>
+      <aside class="right-rail" aria-label="Contexto">
+        <div class="rail-card">
+          <h4 class="mono" data-i18n="rail.ctx">Contexto rápido</h4>
+          <p data-i18n="rail.ctxbody">Cada porcentagem exibida deriva dos estudos indexados (PubMed/OMS). Entidades sem desfecho agregado aparecem sinalizadas como lacuna de evidência.</p>
+          <div class="rail-links">
+            <button class="btn-ghost tiny" type="button" data-goto="graficos" data-i18n="rail.l1">Gráficos de prognóstico</button>
+            <button class="btn-ghost tiny" type="button" data-goto="mapa3d" data-i18n="rail.l2">Mapa 3D do cérebro</button>
+            <button class="btn-ghost tiny" type="button" data-goto="sobre" data-i18n="rail.l3">Fontes e métodos</button>
+          </div>
+        </div>
+        <div class="rail-card credit">
+          <h4 class="mono" data-i18n="cred.dev">Desenvolvimento</h4>
+          <p><strong>Gabriel César</strong><br><span data-i18n="cred.role">Pesquisador em Neuropatologia</span></p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<footer class="site-foot">
+  <div class="foot-inner">
+    <div><span data-i18n="cred.by">Desenvolvido por</span> <strong>Gabriel César</strong> — <span data-i18n="cred.role">Pesquisador em Neuropatologia</span></div>
+    <div class="mono">GlioBio v2.12 · PubMed / OMS CNS5 · uso educativo, não diagnóstico</div>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="knowledge.js"></script>
+<script src="biomarkers.js"></script>
+<script src="charts.js"></script>
+<script src="brainmesh.js"></script>
+<script src="brain3d.js"></script>
+<script src="studies_meta.js"></script>
+<script src="studies_ai.js"></script>
+<script src="studies_desfecho.js"></script>
+<script src="studies_extra.js"></script>
+<script src="analytics.js"></script>
+<script src="app.js"></script>
+<script src="icons.js"></script>
+<script src="i18n.js"></script>
+<script src="translations.js"></script>
+<script src="neuroonco.js"></script>
+<script src="queue.js"></script>
+<script src="imagerec.js"></script>
+<script src="auth.js"></script>
+<script src="gaps.js"></script>
+<script src="ui.js"></script>
+</body>
+</html>
